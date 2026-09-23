@@ -1,4 +1,6 @@
 """Handelsstrategie: SMA-crossover met RSI-filter en stop-loss / take-profit."""
+from __future__ import annotations
+
 import pandas as pd
 
 BUY, SELL, HOLD = "BUY", "SELL", "HOLD"
