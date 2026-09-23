@@ -26,6 +26,19 @@ cp .env.example .env             # daarna .env aanpassen
    Het saldo en de trades komen in `state.json`, de log in `bot.log`.
 3. **Live handelen**: maak op de exchange een API-sleutel aan met alleen rechten voor *handelen* (**nooit** voor opnemen/withdraw), zet die in `.env` met `MODE=live` en start `python bot.py`. De bot vraagt dan eerst om bevestiging.
 
+## App (dashboard)
+
+```bash
+streamlit run app.py
+```
+
+Je browser opent vanzelf het dashboard. Daarin kun je:
+- **Live**: koers, paper-saldo, open positie en grafiek met koop- en verkoopmomenten bekijken. Ververst elke minuut. De bot start en stop je met één knop.
+- **Backtest**: instellingen testen met schuifjes.
+- **Logboek**: zien wat de bot heeft gedaan.
+
+**Op je telefoon** (zelfde wifi): start met `streamlit run app.py --server.address 0.0.0.0` en open op je telefoon het *Network URL*-adres dat in de terminal verschijnt.
+
 ## Strategie
 
 | Regel | Standaard |
@@ -40,6 +53,7 @@ Alle waarden zijn aan te passen in `.env`. De bot kijkt alleen naar **afgesloten
 
 ## Bestanden
 
+- `app.py`: het dashboard
 - `bot.py`: de robot (paper- en live-modus)
 - `strategy.py`: indicatoren en koop/verkoop-regels (hier pas je de strategie aan)
 - `backtest.py`: strategie testen op historische data
