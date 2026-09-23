@@ -25,7 +25,7 @@ def run(df: pd.DataFrame):
             entry = price
         elif action == SELL:
             eur += btc * price * (1 - cfg.fee_pct)
-            trades.append(price / entry - 1)
+            trades.append(price / entry * (1 - cfg.fee_pct) ** 2 - 1)
             btc, entry = 0.0, None
 
     first, last = df["close"].iloc[0], df["close"].iloc[-1]
@@ -37,7 +37,7 @@ def run(df: pd.DataFrame):
     print(f"Buy & hold BTC: {last / first - 1:+.2%}")
     print(f"Trades:         {len(trades)} (gewonnen: {wins})")
     if trades:
-        print(f"Gem. per trade: {sum(trades) / len(trades):+.2%}")
+        print(f"Gem. per trade: {sum(trades) / len(trades):+.2%} (na kosten)")
 
 
 if __name__ == "__main__":
